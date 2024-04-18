@@ -52,7 +52,7 @@
 
 
 
-  //description>-converting into milisecond by dividing 1000.
+  //description>-converting date into milisecond by dividing 1000.
 
    console.log(Date.now()/1000); // output:1713451064.29 
  console.log( Math.floor(Date.now()/1000)); // output : 1713451210 
