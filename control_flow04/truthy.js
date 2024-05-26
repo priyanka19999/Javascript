@@ -1,3 +1,4 @@
+//STRING 
 const userEmail = "p@priya.ai"      // if there is something within the string that assume to be a truth value 
 if (userEmail) {
     console.log("got the user email");          // output : got the user email
@@ -6,7 +7,7 @@ if (userEmail) {
 }                                        
 
 
-
+// EMPTY STRING
 const UserEmail = ""      // if there is nothing within the string or an empty string  that assume to be a false  value 
 if (UserEmail) {
     console.log("got the user email");
@@ -14,16 +15,17 @@ if (UserEmail) {
     console.log("dont have user email");     // output : dont have user email     
 }                
 
-
-//const Username = []      // if there is an empty array that assume to be a true value 
-/*if (Username) {
+// EMPTY ARRAY
+const Username = []      // if there is an empty array that assume to be a true value 
+if (Username) {
     console.log("got the user name");
 }else{
     console.log("dont have user name");     // output : got the user name
-}  */              
+}                
+
+
 
 // how to detect array is empty or not in condition statement
-
 const Username = [] 
 if (Username.length === 0) {
     console.log("array is empty");  // output : array is empty 
@@ -39,7 +41,6 @@ false,   0,   -0,  BigInt(0n), "" (empty string) ,  null ,  undeffined,  NaN (no
 
 
 // how to detect object is empty or not in condition statement.
-
 const emptyObj = {}
 
 if (Object.keys(emptyObj).length === 0) {
