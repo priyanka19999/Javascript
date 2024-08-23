@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chai aur code || DOM </title>
+</head>
+<body style = "background-color: #212121; color :#ffff">
+    <ul class="language">
+
+        <li>Javascript</li>
+
+    </ul>
+</body>
+<script> // How to add values
+     function addLanguage(langName){
+   const li = document.createElement('li');
+   li.innerHTML= `${langName}`
+   document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+
+
+// In this way the document has to traverse a lot in the dom tree for injecting one new element.
+// Imagine if there is multiple or thousand of new element is required to be injected.
+
+// To do this opeartion more easily or in more optimizeable way we can use the below way.
+
+// optimized approach
+function addOptiLanguage(langName){
+const li =  document.createElement('li');
+  li.appendChild(document.createTextNode(langName))
+  document.querySelector('.language').appendChild(li)
+}
+addOptiLanguage("golang")
+addOptiLanguage('next.js')  //To write in large code we use this type becouse its doesnot traverse the tree.
+
+
+//how to "edit" the values
+
+// 1st we have to select
+ const secondLang = document.querySelector("li:nth-child(2)")
+ console.log(secondLang)
+//secondLang.innerHTML= "oracle"
+
+//optimized approach
+// 1st create element
+const newli = document.createElement('li')
+newli.textContent = "oracle"
+secondLang.replaceWith(newli)
+
+
+// Another way to edit 
+const firstLang = document.querySelector("li:first-child")
+firstLang.outerHTML = '<li> TypeScript</li>' // javascript is replaced by typscript
+
+//How to remove 
+const lastlang = document.querySelector('li:last-child')
+lastlang.remove() // it removes next.js from the list 
+
+</script>
+</html>
+
+<!--1> outerHTML
+outerHTML is a property that allows you to get or set the entire HTML content of an element, including the element itself.
+
+Getting outerHTML: This returns the HTML content of the element, including the element’s tags.
+Setting outerHTML: This replaces the element itself and its contents with the provided HTML string.
+
+2> replaceWith()
+replaceWith is a method that replaces the current element with new elements or strings. 
+Using replaceWith: This method allows you to replace the element with new elements or text nodes.
+-->
