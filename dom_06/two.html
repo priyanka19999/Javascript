@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai Aur Code </title>
+</head>
+<body style="background-color: #212121; color :#ffff">
+    <div class="parent">
+        <!--this is a comment-->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+    
+    <script>
+      const parent =  document.querySelector(".parent")
+      console.log(parent);
+      console.log (parent.children[1].innerHTML); //Monday
+
+      for(let i = 0; i<parent.children.length; i++){
+        console.log(parent.children[i].innerHTML) 
+      }
+
+      parent.children[1].style.color = 'green'
+      parent.children[3].style.color = 'orange'
+      console.log(parent.firstElementChild); // Access the first child element 
+      console.log(parent.lastElementChild);
+
+      const DayOne = document.querySelector('.day')
+      console.log(DayOne);// monday
+      console.log(DayOne.parentElement); 
+      console.log(DayOne.nextElementSibling);// tuesday
+
+      console.log('NODES', parent.childNodes);
+    </script>
+</body>
+</html>
+
+<!--CHILD NODES -->
+
+<!-- To access the child nodes of a DOM element, you can use the childNodes property. 
+ This property returns a NodeList (a collection of nodes) representing the child nodes of the specified node.
+ This includes text nodes, element nodes, and comments. -->
+
+ <!-- in line-35 we got the node list 11 where text node , comment , enter space also included.-->
