@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style = "background-color: blueviolet; color:aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id = "images"> 
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress& cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+                
+                <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto-compress& cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+                
+                <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+                
+                <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+                
+                <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+
+                <li><a style="color:aliceblue" href="https://google.com" id = "google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+// 2nd approach for putting Events
+
+// document.getElementById('owl').onclick = function(){
+   // alert('owl spotted') // drawback : this approach gives less features
+//}
+
+document.getElementById('owl').addEventListener('click',function(){                                           
+    alert ('owl seen')
+},false)                                                                            //attachEvent approach()  // jQuery - on
+
+//Event Object 
+document.getElementById('owl').addEventListener('click',function(e){   
+    console.log(e)                                        
+},true)
+
+/*must study these events: 
+  type, timestamp, defaultPrevented ,
+  target, toElement, srcElement, currentTarget
+  client position related : clientX, clientY,screenX,screenY and many more (interview related)
+  keyboard related: altKey , ctrlkey, shiftkey, keyCode */
+
+// Event propagation : it has 2 context i.e eventbubbling, eventcapturing
+
+//EX: Event capturing : (top to bottom )
+document.getElementById('images').addEventListener('click',function(e){                                           
+    console.log ('clicked inside the ul')
+},false)  // it will show when u click inside the images (// Event capturing mode enabled with 'true')
+      b
+document.getElementById('owl').addEventListener('click',function(e){                                           
+    console.log ('owl clicked')
+    e.stopPropagation() //Stop the event from bubbling up
+},false) // it will show when u specifically clicked owl image. (// Event capturing mode enabled with 'true')
+
+//"clicked inside the ul" (because the event starts with top). Then "owl clicked" (as the event propagates down to the button).
+//event.stopPropagation()) is a method in JavaScript that stops the event from propagating through the DOM hierarchy.
+
+// ex: event Bubbling : (bottom to top)
+document.getElementById("images").addEventListener("click", function() {
+    aconsole.log("clicked inside the ul");
+  });
+
+  document.getElementById("owl").addEventListener("click", function() {
+    alert("owl clicked");
+  });
+
+// owl clicked" (because the event starts with the button).Then "clicked inside the ul" (as the event bubbles up to the parent).
+      
+Document.getElementById("google").addEventListener
+("click", function(e){
+    e.preventDefault();  
+    e.stopPropagation();
+    console.log('google clicked')
+},false);
+
+
+// to get targent value we use target event 
+document.querySelector("#images").addEventListener ('click', function(e){
+    console.log(e.target) // event.target : it refers to the element that triggered the event. and used in event handling to determine which element the event originatwd from. 
+})
+
+// you can take more value after the e.target like (parentNode:Refers to the parent of the element that triggered the event.)
+document.querySelector("#images").addEventListener ('click', function(e){
+    console.log(e.target.parentNode) // Logs the parent element of the images
+
+}) 
+
+//if you want to remove the images on click 
+document.querySelector("#images").addEventListener ('click', function(e){
+    console.log(e.target.parentNode) ;
+    let removeIt = e.target.parentNode 
+    removeIt.remove() // method-1 to remove 
+    // removeIt.parentNode.removeChild(removeIt) // method-2 to remove 
+})
+
+
+
+// It checks if the clicked element's parent is an IMG and then removes that image from the page.
+document.querySelector("#images").addEventListener ('click', function(e){
+    console.log(e.target.parentNode.tagName) ;
+    
+    if (e.target.parentNode.tagName ==='IMG'){  // When you click on an image within the #images section, the script will remove that image from the webpage if the condition about its parent being an IMG is met
+        console.log (e.target.id);
+        let removeIt = e.target.parentNode 
+         removeIt.remove() 
+    }
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*JavaScript is a sequenctially run Language.
+visual representation of event bubbling :
+Click on the button -> Button -> Parent Div -> Body -> HTML -> Document
+
+visual representation of event capturing :
+Click on the button -> Document -> HTML -> Body -> Parent Div -> Button
+*/
+</script>
+</html>
+
+
