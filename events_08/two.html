@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning settimeout , clearTimeout</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="cancel">Stop</button>
+    <script>
+        /*LEARING SETTIMEOUT, CLEARTIMEOUT*/
+
+        // function calling directly (method-1)
+         setTimeout(function(){
+           console.log("hey");
+        },1000) 
+        
+        // function as reference (method-2)
+        const saybarsha = function(){
+            console.log("barsha")}
+            setTimeout(saybarsha,2000)
+        
+        /*changing the name of h1
+        document.querySelector("h1").innerHTML = "Best javascript series"*/
+
+        //changing of h1 after certain time i.e using of settimeout and using method-2
+        const changeText = function(){
+            document.querySelector("h1").innerHTML = "Best javascript series" 
+        }
+        setTimeout(changeText,3000)
+
+        /*clearTimeout()*/
+        const clear = setTimeout(changeText,3000)
+        document.querySelector('#cancel').addEventListener("click", function(){
+            clearTimeout(clear)
+            console.log("stopped")
+        });
+    </script>
+</body>
+</html>
