@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+    <script>
+        class React {
+            constructor (){
+                this.library = "React"
+                this.server = "https://localhost:300"
+                // requirement : 1> reference of button , 2> message something after clicking the button
+                document
+                .querySelector("button")
+                .addEventListener ("click" , this.handleClick.bind(this))
+            }
+            handleClick(){
+                console.log("button clicked");
+                /*console.log(this.server);
+                console.log(this.library);*/ 
+
+                console.log(this);
+
+            }
+        }
+
+        const app = new React()
+    </script>
+    <!-- bind() method is used to create a new function with a specific this value and, optionally, initial arguments.
+     This is particularly useful for controlling what this refers to in a function, especially when working with event handlers or callbacks. -->
+</body>
+</html>
