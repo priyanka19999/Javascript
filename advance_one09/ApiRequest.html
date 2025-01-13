@@ -1,0 +1,33 @@
+<!DOCTYPE html>00
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request </title>
+</head>
+<body style="background-color: bisque;">
+    There are 5 possible values for readyState: 
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+
+</body>
+<script>
+    const requestUrl =  "https://api.github.com/users/Priyankapriyadarshani"   //This specifies the URL from which you want to fetch data, in this case, it points to a GitHub API to get information about the user Priyanka priyadarshani
+ const xhr =  new XMLHttpRequest()  // creating a new XMLHttpRequest object to handle the server request.
+ xhr.open("GET" , requestUrl)     // is used to initialize the XMLHttpRequest and specify the type of request being made as well as the URL to which the request is sent
+ xhr.onreadystatechange = function(){      //function that will be triggered every time the readyState of the xhr changes.
+    console.log(xhr.readyState);
+    if(xhr.readyState === 4){
+        const data = JSON.parse (this.responseText) //JSON.parse converts string into JSON
+        console.log(typeof data); 
+        console.log(data.followers);  // it will show you the amount of followers you have
+    }
+ }
+ 
+ xhr.send();  // used to send the request 
+</script>
+</html>
