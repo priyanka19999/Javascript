@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure and chai</title>
+</head>
+<body style="background-color: blueviolet;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    /* function init(){
+        let name = "Mozilla";
+        function displayName(){
+            console.log(name);
+        }
+        displayName()
+    }
+    init(); */
+
+// CONCEPT OF OUTER AND INNER SCOPE
+
+function outer (){
+    let username = "barsha"
+    //console.log(secret); / outer function cannot access the child properties or inner function's properties
+    function inner (){
+        let secret = "secret-1234"
+        console.log("inner",username);
+    }
+    inner()
+    function innerTwo(){
+        console.log("innertwo" , username);
+        console.log("secret access" , secret); // innner functions can not access another inner functions properties
+    }
+    innerTwo()
+   
+}
+outer()
+console.log("TOO OUTER",username);
+
+function makefunc(){
+    const name = "Mozilla"
+
+    function DisplayName (){
+    console.log(name);
+}
+return DisplayName;
+}
+const myFunc = makefunc();
+myFunc();
+</script>
+
+
+
+<script>
+   // METHOD-1
+    //changes the background color by clicking the orange button
+    document.getElementById("orange").onclick = function(){
+        document.body.style.backgroundColor = "orange"
+    } 
+    document.getElementById("green").onclick = function(){
+        document.body.style.backgroundColor = "green"
+    }
+
+//METHOD-2
+//changes the background color by clicking the orange and green button using lexical scope and closure in real world scenario
+function clickHandler (color){
+   return function (){
+    document.body.style.backgroundColor = `${color}`
+   }
+}
+document.getElementById('orange').onclick = clickHandler("orange")
+document.getElementById('green').onclick = clickHandler("green")
+</script>
+</html>
